@@ -12,7 +12,4 @@ public class Chicken {
 	}
 	/** The type of Chicken we are dealing with*/
 	public ChickenType chickType;
-	
-	
-	}
 }
