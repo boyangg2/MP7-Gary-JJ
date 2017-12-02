@@ -1,4 +1,4 @@
-// Gary, JJ
+// Gary, JJ hhh
 /** A class to assign the basic characteristics of chicken*/
 public class Chicken {
 /** we have three different chicken special abilities*/
