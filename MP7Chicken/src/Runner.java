@@ -3,22 +3,21 @@
 import java.util.Scanner;
 
 public class Runner {
-	static Scanner kb;
-	private static String playerName;
-	private static String potatoName;
+	static Scanner kb = new Scanner(System.in);
+	static Player player = new Player();
+	static Potato potato = new Potato();
 
 	// introduction, ask name
 	public static void intro() {
 		System.out.println("What is your name?");
-		playerName = kb.next().toLowerCase();
-		potatoName = substringPalindrome(playerName);
+		player.setName(kb.next().toLowerCase());
+		potato.setName(substringPalindrome(player.getName()));
 
-
-		System.out.println("Your name is " + playerName);
-		System.out.println("The Evil potato's name: " + potatoName);
+		System.out.println("Your name is " + player.getName());
+		System.out.println("The Evil potato's name: " + potato.getName());
 	}
 
-	public static String substringPalindrome(String w) {
+	public static String substringPalindrome(final String w) {
 		// return the longest substring of w that is a palindrome
 		return w;
 	}
@@ -28,7 +27,6 @@ public class Runner {
 	// begin real stuff
 
 	public static void main (String[] args) {
-		kb = new Scanner(System.in);
 		intro();
 	}
 
