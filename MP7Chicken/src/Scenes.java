@@ -2,7 +2,7 @@
 
 public class Scenes {
 
-	public void pr(String s) {
+	public static void pr(String s) {
 		long t0, t1;
 	 	t0 = System.currentTimeMillis();
 		do { t1 = System.currentTimeMillis();
@@ -10,8 +10,33 @@ public class Scenes {
 		System.out.println(s);
 	}
 
-	public void opening() {
-		
+	public static void clear() {
+		System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	}
+
+	public static void opening() {
+		clear();
+		pr("///////////////////////////////////////////////////////////////////////////////");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                  *************   Chicken  *************                   //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                  **************************************                   //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("//                                                                           //");
+		pr("///////////////////////////////////////////////////////////////////////////////");
 	}
 
 
