@@ -2,13 +2,21 @@
 
 import java.util.Scanner;
 
+/* Class that implements a coordinated game of chickens and potatos.
+ * 
+ * Oversees overall progress of game.
+ */
 public class Runner {
+	/* Input Scanner */
 	static Scanner kb = new Scanner(System.in);
+	/* Player object. */
 	static Player player = new Player();
+	/* Potatos object (enemy). */
 	static Potato potato = new Potato();
 
-	// introduction, ask name
+	/* Introduction to game. */
 	public static void intro() {
+		Scenes.opening();
 		System.out.println("What is your name?");
 		player.setName(kb.next().toLowerCase());
 		potato.setName(substringPalindrome(player.getName()));
@@ -17,13 +25,12 @@ public class Runner {
 		System.out.println("The Evil potato's name: " + potato.getName());
 	}
 
+	/* Method to determine a palindromic substring. */
 	public static String substringPalindrome(final String w) {
-		// return the longest substring of w that is a palindrome
 		return w;
 	}
 
-	// begin real stuff
-
+	/* Main control for game progress. */
 	public static void main (String[] args) {
 		intro();
 	}
