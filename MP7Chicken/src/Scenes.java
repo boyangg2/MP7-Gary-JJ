@@ -5,7 +5,8 @@ public class Scenes {
 	public static void pr(String s) {
 		long t0, t1;
 	 	t0 = System.currentTimeMillis();
-		do { t1 = System.currentTimeMillis();
+		do {
+			t1 = System.currentTimeMillis();
 		} while((t1-t0) < 35);
 		System.out.println(s);
 	}
