@@ -22,8 +22,6 @@ public class Runner {
 		return w;
 	}
 
-
-
 	// begin real stuff
 
 	public static void main (String[] args) {

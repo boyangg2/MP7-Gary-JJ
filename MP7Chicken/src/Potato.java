@@ -5,7 +5,6 @@ public class Potato {
 	private int health;
 
 	public Potato() {
-
 	}
 
 	public Potato(final String n, final int h) {
@@ -14,8 +13,15 @@ public class Potato {
 	}
 
 	public boolean takeDamage(final int d) {
-		health -= d;
-		return (health <= 0);
+		if ((health - d) >= 0) {
+			health -= d;
+			return false;
+		}
+		return true;
+	}
+
+	public void setHealth(final int h) {
+		health = h;
 	}
 
 	public String getName() {
