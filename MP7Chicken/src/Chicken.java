@@ -13,5 +13,4 @@ public class Chicken {
 	
 		return true;
 	}
-
 }
