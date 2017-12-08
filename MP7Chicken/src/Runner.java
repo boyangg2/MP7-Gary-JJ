@@ -19,16 +19,13 @@ public class Runner {
 		Scenes.opening();
 		System.out.println("What is your name?");
 		player.setName(kb.next().toLowerCase());
-		potato.setName(substringPalindrome(player.getName()));
+		potato.setName(player.getName()+"'s angry grandpa");
 
 		System.out.println("Your name is " + player.getName());
 		System.out.println("The Evil potato's name: " + potato.getName());
 	}
 
-	/* Method to determine a palindromic substring. */
-	public static String substringPalindrome(final String w) {
-		return w;
-	}
+	
 
 	/* Main control for game progress. */
 	public static void main (String[] args) {
