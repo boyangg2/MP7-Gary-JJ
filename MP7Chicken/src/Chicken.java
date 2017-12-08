@@ -10,7 +10,7 @@ public class Chicken {
 	}
 
 	public boolean attack(final Potato p) {
-		// implement
+	
 		return true;
 	}
 
