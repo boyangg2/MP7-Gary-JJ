@@ -21,12 +21,17 @@ public class Runner {
 		System.out.print("enter name: ");
 		player = new Player(kb.next().toLowerCase(), e);
 		potato = new Potato();
-		potato.setName(player.getName() + "'s angry grandpa");
+		potato.setName(reverseWord(player.getName()));
 		Scenes.opening();
 
 		System.out.println(player.getName() + " is the master of all chickens.");
 		System.out.println(player.getName() + " has the energy to summon chickens!");
 		Scenes.wait(4);
+	}
+
+	public static String reverseWord(String w) {
+		/* is reversed word = player's name, return player.getName() + "'s angry grandpa" */
+		return w + " reversed";
 	}
 
 	public static void setUp() {
@@ -157,5 +162,4 @@ public class Runner {
 		intro(INIT_ENERGY);
 		setUp();
 	}
-
 }
