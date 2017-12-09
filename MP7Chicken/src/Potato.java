@@ -20,6 +20,10 @@ public class Potato {
 		return true;
 	}
 
+	public int getHealth() {
+		return health;
+	}
+
 	public void setHealth(final int h) {
 		health = h;
 	}
