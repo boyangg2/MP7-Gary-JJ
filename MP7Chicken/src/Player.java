@@ -2,12 +2,12 @@
 
 public class Player {
 	private String name;
-	private int energy;
+	private long energy;
 
 	public Player() {
 	}
 
-	public Player(final String n, final int e) {
+	public Player(final String n, final long e) {
 		name = n;
 		energy = e;
 	}
@@ -20,15 +20,15 @@ public class Player {
 		name = n;
 	}
 
-	public int getEnergy() {
+	public long getEnergy() {
 		return energy;
 	}
 
-	public void setEnergy(final int e) {
+	public void setEnergy(final long e) {
 		energy = e;
 	}
 
-	public boolean useEnergy(final int e) {
+	public boolean useEnergy(final long e) {
 		if ((energy - e) >= 0) {
 			energy -= e;
 			return true;

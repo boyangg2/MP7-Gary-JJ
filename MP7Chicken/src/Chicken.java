@@ -1,28 +1,28 @@
 // Gary, JJ 2017
 
 public class Chicken {
-	private int damage;
-	private int weaponBonus;
+	private long damage;
+	private long weaponBonus;
 
 	public Chicken() {
 
 	}
 
-	public Chicken(final int d, final int w) {
+	public Chicken(final long d, final long w) {
 		damage = d;
 		weaponBonus = w;
 	}
 
-	public int getDamage() {
+	public long getDamage() {
 		return damage;
 	}
 
-	public void setDamage(int d) {
+	public void setDamage(final long d) {
 		damage = d;
 	}
 
-	public void setWeaponBonus(int w) {
-		damage += w;
+	public void setWeaponBonus(final long w) {
+		damage *= w;
 	}
 
 	public boolean attack(final Potato p) {

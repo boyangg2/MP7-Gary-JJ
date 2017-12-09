@@ -2,17 +2,17 @@
 
 public class Potato {
 	private String name;
-	private int health;
+	private long health;
 
 	public Potato() {
 	}
 
-	public Potato(final String n, final int h) {
+	public Potato(final String n, final long h) {
 		name = n;
 		health = h;
 	}
 
-	public boolean takeDamage(final int d) {
+	public boolean takeDamage(final long d) {
 		if ((health - d) >= 0) {
 			health -= d;
 			return false;
@@ -20,11 +20,11 @@ public class Potato {
 		return true;
 	}
 
-	public int getHealth() {
+	public long getHealth() {
 		return health;
 	}
 
-	public void setHealth(final int h) {
+	public void setHealth(final long h) {
 		health = h;
 	}
 
