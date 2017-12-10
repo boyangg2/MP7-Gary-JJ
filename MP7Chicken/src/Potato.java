@@ -13,7 +13,7 @@ public class Potato {
 	}
 
 	public boolean takeDamage(final long d) {
-		if ((health - d) >= 0) {
+		if ((health - d) > 0) {
 			health -= d;
 			return false;
 		}

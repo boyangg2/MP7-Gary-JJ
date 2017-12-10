@@ -7,6 +7,10 @@ public class Player {
 	public Player() {
 	}
 
+	public Player(final String n) {
+		name = n;
+	}
+
 	public Player(final String n, final long e) {
 		name = n;
 		energy = e;

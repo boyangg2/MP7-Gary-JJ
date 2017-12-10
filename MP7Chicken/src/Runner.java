@@ -19,9 +19,9 @@ public class Runner {
 	static final int INIT_ENERGY = 50;
 
 	/* Introduction to game. */
-	public static void intro(final int e) {
+	public static void intro() {
 		System.out.print("enter name: ");
-		player = new Player(kb.next().toLowerCase(), e);
+		player = new Player(kb.next().toLowerCase());
 		potato = new Potato();
 		potato.setName(reverseWord(player.getName()));
 		Scenes.opening();
@@ -44,24 +44,29 @@ public class Runner {
 		return w + " reversed";
 	}
 
+	public static void setUpPlayer() {
+		player.setEnergy(INIT_ENERGY);
+	}
+
 	public static void setUpPotato() {
 		potato.setName(potato.getName() + " " + gameCount);
 		Scenes.revealPotato();
 		System.out.println("the evil potato " + potato.getName() + " appears!");
 		Scenes.wait(2);
+		potato.setHealth(INIT_ENERGY);
 	}
 
 	public static void setUpChicken() {
 		System.out.println("\n" + player.getName() + " summons a new chicken!");
 		chicken = new Chicken();
 
-		Scenes.wait(1);
+		Scenes.wait(2);
 
 		boolean valid = false;
 
 		while (!valid) {
 			displayStats();
-			displayStyles();
+			Scenes.displayStyles();
 			System.out.print("style (a, b, or c): ");
 			char choice = kb.next().toLowerCase().charAt(0);
 
@@ -91,10 +96,9 @@ public class Runner {
 							}
 							break;
 				default: 	System.out.println("\ninvalid choice.");
+							Scenes.wait(1);
 							break;
 			}
-
-			Scenes.wait(1);
 		}
 
 		System.out.println("\n" + player.getName() + " decides what he wants with his chicken.");
@@ -104,7 +108,7 @@ public class Runner {
 
 		while (!valid) {
 			displayStats();
-			displayWeapons();
+			Scenes.displayWeapons();
 			System.out.print("style (a, b, c, or d): ");
 			char choice = kb.next().toLowerCase().charAt(0);
 
@@ -136,46 +140,41 @@ public class Runner {
 							}
 							break;
 				default: 	System.out.println("\ninvalid choice.");
+							Scenes.wait(1);
 							break;
 			}
-
-			Scenes.wait(1);
-			System.out.println();
-			Scenes.preBattle();
-			Scenes.wait(1);
-			displayStats();
 		}
 	}
 
 	public static void displayStats() {
-		System.out.println("\n" + player.getName() + " energy: " + player.getEnergy());
+		System.out.println("\n" + player.getName() + "'s energy: " + player.getEnergy());
 		if (chicken.getDamage() != 0) {
 			System.out.println("chicken damage capability: " + chicken.getDamage());
 		}
-		System.out.println("potato " + potato.getName() + " health: " + potato.getHealth());
-	}
-
-	public static void displayStyles() {
-		System.out.println("\n    style:            damage:        cost:");
-		System.out.println("(a) Fried Chicken:    10             10");
-		System.out.println("(b) Grilled Chicken:  50             50");
-		System.out.println("(c) Seasoned Chicken: 100            100");
-	}
-
-	public static void displayWeapons() {
-		System.out.println("\n    weapon:           damage bonus:  cost:");
-		System.out.println("(a) chicken only:     *1             0");
-		System.out.println("(b) submachine gun:   *10            10");
-		System.out.println("(c) grenade:          *100           30");
-		System.out.println("(d) a nuclear rocket: *10000000      1000");
+		System.out.println("potato " + potato.getName() + "'s health: " + potato.getHealth());
 	}
 
 	/* Main control for game progress. */
 	public static void main(String[] args) {
-		intro(INIT_ENERGY);
+		intro();
 
-
+		setUpPlayer();
 		setUpPotato();
 		setUpChicken();
+
+		System.out.println();
+		Scenes.preBattle();
+		Scenes.wait(1);
+		displayStats();
+		System.out.println();
+		Scenes.wait(2);
+
+		if (chicken.attack(potato)) {
+			displayStats();
+			System.out.println("success");
+		} else {
+			displayStats();
+			System.out.println("failure");
+		}
 	}
 }

@@ -26,6 +26,22 @@ public class Chicken {
 	}
 
 	public boolean attack(final Potato p) {
-		return true;
+		Scenes.chickenAttack();
+		System.out.println("the chicken attacks " + p.getName() + "!");
+		Scenes.wait(2);
+		if (p.takeDamage(damage)) {
+			Scenes.potatoDie();
+			System.out.println("the chicken defeated " + p.getName() + "!");
+			Scenes.wait(2);
+			return true;
+		} else {
+			System.out.println("the chicken lowers " + p.getName()
+				+ "'s health to " + p.getHealth() + "!");
+			Scenes.wait(2);
+			Scenes.chickenDie();
+			System.out.println("but " + p.getName() + " instantly kills the chicken!");
+			Scenes.wait(2);
+			return false;
+		}
 	}
 }

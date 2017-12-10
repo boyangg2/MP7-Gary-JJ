@@ -53,11 +53,15 @@ public class Scenes {
 		pr("//               ____                          _|_                           //");
 		pr("//              (    )                        < O )                          //");
 		pr("//             (  . .  )                      (   )__                        //");
-		pr("//            (         )        VS           (_____)                        //");
+		pr("//            (         )           vs        (_____)                        //");
 		pr("//            (         )                       |  |                         //");
 		pr("//             (       )                                                     //");
 		pr("//             (_____)                                                       //");
 		pr("//                                                                           //");
+		pr("///////////////////////////////////////////////////////////////////////////////");
+		pr("");
+		pr("                             THE BATTLE BEGINS                                 ");
+		pr("");
 		pr("///////////////////////////////////////////////////////////////////////////////");
 	}
 
@@ -115,6 +119,24 @@ public class Scenes {
 		pr("//                                                                           //");
 		pr("//                                                                           //");
 		pr("///////////////////////////////////////////////////////////////////////////////");
+		pr("");
+		pr("                                 GAME OVER                                     ");
+		pr("");
+		pr("///////////////////////////////////////////////////////////////////////////////");
 	}
 
+	public static void displayStyles() {
+		pr("\nstyle:                damage:        cost:");
+		pr("(a) Fried Chicken:    10             10");
+		pr("(b) Grilled Chicken:  50             50");
+		pr("(c) Seasoned Chicken: 100            100");
+	}
+
+	public static void displayWeapons() {
+		pr("\nweapon:               damage bonus:  cost:");
+		pr("(a) chicken only:     *1             0");
+		pr("(b) submachine gun:   *10            10");
+		pr("(c) grenade:          *100           30");
+		pr("(d) a nuclear rocket: *10000000      1000");
+	}
 }
