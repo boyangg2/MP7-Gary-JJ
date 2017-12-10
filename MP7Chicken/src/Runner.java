@@ -32,13 +32,14 @@ public class Runner {
 
 	public static String reverseWord(final String w) {
 		String rev = "";
+		for(int i = w.length() - 1; i >= 0; i--) {
+			rev = rev + w.charAt(i);
+		}
 
-		// implement method for reversing w
-		rev = "otatop";
-
+		
 		/* if reversed word = player's name, return player.getName() + "'s angry grandpa" */
-		if (rev == player.getName()) {
-			return player.getName() + "'s angry grandpa";
+		if (rev == w) {
+			return w + "'s angry grandpa";
 		}
 		return rev;
 	}
