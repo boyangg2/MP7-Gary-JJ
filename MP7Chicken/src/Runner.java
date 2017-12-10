@@ -38,7 +38,7 @@ public class Runner {
 
 		
 		/* if reversed word = player's name, return player.getName() + "'s angry grandpa" */
-		if (rev == w) {
+		if (rev.equals(w)) {
 			return w + "'s angry grandpa";
 		}
 		return rev;
