@@ -28,19 +28,19 @@ public class Chicken {
 	public boolean attack(final Potato p) {
 		Scenes.chickenAttack();
 		System.out.println("the chicken attacks " + p.getName() + "!");
-		Scenes.wait(2);
+		Scenes.wait(1);
 		if (p.takeDamage(damage)) {
 			Scenes.potatoDie();
 			System.out.println("the chicken defeated " + p.getName() + "!");
-			Scenes.wait(2);
+			Scenes.wait(1);
 			return true;
 		} else {
 			System.out.println("the chicken lowers " + p.getName()
 				+ "'s health to " + p.getHealth() + "!");
-			Scenes.wait(2);
+			Scenes.wait(1);
 			Scenes.chickenDie();
-			System.out.println("but " + p.getName() + " instantly kills the chicken!");
-			Scenes.wait(2);
+			System.out.println("but potato " + p.getName() + " instantly kills the chicken!");
+			Scenes.wait(1);
 			return false;
 		}
 	}

@@ -16,16 +16,15 @@ public class Runner {
 	/* Game counter. */
 	static int gameCount = 1;
 	static Chicken chicken;
-	static final int INIT_ENERGY = 50;
+	static final long INIT_ENERGY = 50;
 
 	/* Introduction to game. */
 	public static void intro() {
 		System.out.print("enter name: ");
-		player = new Player(kb.next().toLowerCase());
-		potato = new Potato();
-		potato.setName(reverseWord(player.getName()));
+		player = new Player(kb.next().toLowerCase(), INIT_ENERGY);
+		potato = new Potato(reverseWord(player.getName()) + " 1", INIT_ENERGY);
+		
 		Scenes.opening();
-
 		System.out.println(player.getName() + " is the master of all chickens.");
 		System.out.println(player.getName() + " has the energy to summon chickens!");
 		Scenes.wait(4);
@@ -35,48 +34,36 @@ public class Runner {
 		String rev = "";
 
 		// implement method for reversing w
-		
+		rev = "otatop";
 
 		/* if reversed word = player's name, return player.getName() + "'s angry grandpa" */
 		if (rev == player.getName()) {
 			return player.getName() + "'s angry grandpa";
 		}
-		return w + " reversed";
+		return rev;
 	}
 
-	public static void setUpPlayer() {
-		player.setEnergy(INIT_ENERGY);
-	}
-
-	public static void setUpPotato() {
-		potato.setName(potato.getName() + " " + gameCount);
-		Scenes.revealPotato();
-		System.out.println("the evil potato " + potato.getName() + " appears!");
-		Scenes.wait(2);
-		potato.setHealth(INIT_ENERGY);
-	}
-
-	public static void setUpChicken() {
+	public static void createChicken() {
 		System.out.println("\n" + player.getName() + " summons a new chicken!");
 		chicken = new Chicken();
 
-		Scenes.wait(2);
+		Scenes.wait(1);
 
 		boolean valid = false;
+		char choice;
 
 		while (!valid) {
 			displayStats();
 			Scenes.displayStyles();
-			System.out.print("style (a, b, or c): ");
-			char choice = kb.next().toLowerCase().charAt(0);
-
+			choice = kb.next().toLowerCase().charAt(0);
 			switch (choice) {
 				case 'a': 	if (player.useEnergy(10)) {
 								chicken.setDamage(10);
 								valid = true;
 							} else {
 								System.out.println("\n" + player.getName()
-								+ " does not have enough energy to purchase Fried Chicken.");
+								+ " does not have enough energy to create Fried Chicken.");
+								Scenes.wait(1);
 							}
 							break;
 				case 'b': 	if (player.useEnergy(50)) {
@@ -84,7 +71,8 @@ public class Runner {
 								valid = true;
 							} else {
 								System.out.println("\n" + player.getName()
-								+ " does not have enough energy to purchase Grilled Chicken.");
+								+ " does not have enough energy to create Grilled Chicken.");
+								Scenes.wait(1);
 							}
 							break;
 				case 'c': 	if (player.useEnergy(100)) {
@@ -92,7 +80,8 @@ public class Runner {
 								valid = true;
 							} else {
 								System.out.println("\n" + player.getName()
-								+ " does not have enough energy to purchase Seasoned Chicken.");
+								+ " does not have enough energy to create Seasoned Chicken.");
+								Scenes.wait(1);
 							}
 							break;
 				default: 	System.out.println("\ninvalid choice.");
@@ -101,7 +90,7 @@ public class Runner {
 			}
 		}
 
-		System.out.println("\n" + player.getName() + " decides what he wants with his chicken.");
+		System.out.println("\n" + player.getName() + " decides what he wants with the chicken.");
 		Scenes.wait(1);
 
 		valid = false;
@@ -109,34 +98,35 @@ public class Runner {
 		while (!valid) {
 			displayStats();
 			Scenes.displayWeapons();
-			System.out.print("style (a, b, c, or d): ");
-			char choice = kb.next().toLowerCase().charAt(0);
-
+			choice = kb.next().toLowerCase().charAt(0);
 			switch (choice) {
 				case 'a': 	valid = true;
 							break;
-				case 'b': 	if (player.useEnergy(10)) {
+				case 'b': 	if (player.useEnergy(20)) {
 								chicken.setWeaponBonus(10);
 								valid = true;
 							} else {
 								System.out.println("\n" + player.getName()
-								+ " does not have enough energy to purchase a submachine gun.");
+								+ " does not have enough energy to use a submachine gun.");
+								Scenes.wait(1);
 							}
 							break;
-				case 'c': 	if (player.useEnergy(30)) {
+				case 'c': 	if (player.useEnergy(1000)) {
 								chicken.setWeaponBonus(100);
 								valid = true;
 							} else {
 								System.out.println("\n" + player.getName()
-								+ " does not have enough energy to purchase a grenade.");
+								+ " does not have enough energy to use a grenade.");
+								Scenes.wait(1);
 							}
 							break;
-				case 'd':	if (player.useEnergy(1000)) {
-								chicken.setWeaponBonus(10000000);
+				case 'd':	if (player.useEnergy(10000)) {
+								chicken.setWeaponBonus(1000);
 								valid = true;
 							} else {
 								System.out.println("\n" + player.getName()
-								+ " does not have enough energy to purchase a nuclear rocket.");
+								+ " does not have enough energy to use a nuclear rocket.");
+								Scenes.wait(1);
 							}
 							break;
 				default: 	System.out.println("\ninvalid choice.");
@@ -144,6 +134,15 @@ public class Runner {
 							break;
 			}
 		}
+	}
+
+	public static void prepareBattle() {
+		System.out.println();
+		Scenes.preBattle();
+		Scenes.wait(1);
+		displayStats();
+		System.out.println();
+		Scenes.wait(2);
 	}
 
 	public static void displayStats() {
@@ -154,27 +153,36 @@ public class Runner {
 		System.out.println("potato " + potato.getName() + "'s health: " + potato.getHealth());
 	}
 
+	public static void reset() {
+		gameCount++;
+		player.setEnergy(player.getEnergy() + chicken.getDamage());
+
+		potato.upgrade(gameCount);
+		potato.setName(potato.getName().substring(0, potato.getName().length() - 1) 
+			+ gameCount);
+		Scenes.revealPotato();
+		System.out.println("a new evil potato named " + potato.getName() + " appears!");
+		Scenes.wait(1);
+	}
+
+	public static void gameOver() {
+		System.out.println("\n" + player.getName() + " has no energy to summon a chicken.");
+		System.out.println(player.getName() + " collapses.\n");
+		Scenes.wait(2);
+		Scenes.youDied();
+	}
+
 	/* Main control for game progress. */
 	public static void main(String[] args) {
 		intro();
-
-		setUpPlayer();
-		setUpPotato();
-		setUpChicken();
-
-		System.out.println();
-		Scenes.preBattle();
-		Scenes.wait(1);
-		displayStats();
-		System.out.println();
-		Scenes.wait(2);
-
-		if (chicken.attack(potato)) {
-			displayStats();
-			System.out.println("success");
-		} else {
-			displayStats();
-			System.out.println("failure");
+		while (player.isAlive()) {
+			createChicken();
+			prepareBattle();
+			if (chicken.attack(potato)) {
+				reset();
+			}
+			Scenes.wait(1);
 		}
+		gameOver();
 	}
 }

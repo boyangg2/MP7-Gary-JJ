@@ -130,13 +130,15 @@ public class Scenes {
 		pr("(a) Fried Chicken:    10             10");
 		pr("(b) Grilled Chicken:  50             50");
 		pr("(c) Seasoned Chicken: 100            100");
+		System.out.print("style (a, b, or c): ");
 	}
 
 	public static void displayWeapons() {
 		pr("\nweapon:               damage bonus:  cost:");
-		pr("(a) chicken only:     *1             0");
-		pr("(b) submachine gun:   *10            10");
-		pr("(c) grenade:          *100           30");
-		pr("(d) a nuclear rocket: *10000000      1000");
+		pr("(a) chicken only:     none           free");
+		pr("(b) submachine gun:   *10            20");
+		pr("(c) grenade:          *100           1000");
+		pr("(d) a nuclear rocket: *10000         100000");
+		System.out.print("style (a, b, c, or d): ");
 	}
 }

@@ -28,8 +28,16 @@ public class Player {
 		return energy;
 	}
 
+	public boolean isAlive() {
+		return energy > 0;
+	}
+
 	public void setEnergy(final long e) {
-		energy = e;
+		if (e < 1000000000) {
+			energy = e;
+		} else {
+			energy = 1000000000;
+		}
 	}
 
 	public boolean useEnergy(final long e) {

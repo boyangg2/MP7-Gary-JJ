@@ -20,6 +20,10 @@ public class Potato {
 		return true;
 	}
 
+	public void upgrade(final int i) {
+		health += (long)(Math.pow(Math.random() * 10 + 1, i));
+	}
+
 	public long getHealth() {
 		return health;
 	}
