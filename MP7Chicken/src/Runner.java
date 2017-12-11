@@ -168,6 +168,13 @@ public class Runner {
 		Scenes.wait(1);
 	}
 
+	public static void bonus() {
+		player.setEnergy(player.getEnergy() + 800);		
+		Scenes.bonus();
+		System.out.println("Congrats! You get 800 bonus pity energy!");
+		Scenes.wait(1);
+	}
+
 	public static void gameOver() {
 		System.out.println("\n" + player.getName() + " has no energy to summon a chicken.");
 		System.out.println(player.getName() + " collapses.\n");
@@ -183,15 +190,11 @@ public class Runner {
 			createChicken();
 			count++;
 			prepareBattle();
-			if (count ==3) {
-				player.setEnergy(player.getEnergy() + 800);		
-				Scenes.bonus();
-				System.out.println("Congrats! God bless you. You get 800 energy bonus");
-				Scenes.wait(1);
-			}
 			if (chicken.attack(potato)) {
 				reset();
 				count = 0; 
+			} else if (count % 3 == 0) {
+				bonus();
 			}
 			Scenes.wait(1);
 		}
