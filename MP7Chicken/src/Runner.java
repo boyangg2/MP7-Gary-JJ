@@ -184,8 +184,10 @@ public class Runner {
 			count++;
 			prepareBattle();
 			if (count ==3) {
-				player.setEnergy(player.getEnergy() + 800);
+				player.setEnergy(player.getEnergy() + 800);		
+				Scenes.bonus();
 				System.out.println("Congrats! God bless you. You get 800 energy bonus");
+				Scenes.wait(1);
 			}
 			if (chicken.attack(potato)) {
 				reset();
