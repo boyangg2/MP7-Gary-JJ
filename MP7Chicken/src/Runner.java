@@ -176,11 +176,18 @@ public class Runner {
 	/* Main control for game progress. */
 	public static void main(String[] args) {
 		intro();
+		int count = 0; 
 		while (player.isAlive()) {
 			createChicken();
+			count++;
 			prepareBattle();
+			if (count ==3) {
+				player.setEnergy(player.getEnergy() + 800);
+				System.out.println("Congrats! God bless you. You get 800 energy bonus");
+			}
 			if (chicken.attack(potato)) {
 				reset();
+				count = 0; 
 			}
 			Scenes.wait(1);
 		}
